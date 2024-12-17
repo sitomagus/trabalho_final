@@ -1,0 +1,108 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Tempo de geração: 17/12/2024 às 10:03
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.0.30
+CREATE DATABASE ong_esperanca;
+
+USE ong_esperanca;
+
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Banco de dados: `ong_esperanca`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `animais`
+--
+
+CREATE TABLE `animais` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `idade` int(11) NOT NULL,
+  `sexo` enum('Macho','Fêmea') NOT NULL,
+  `tipo` enum('Gato','Cachorro') NOT NULL,
+  `foto` varchar(255) NOT NULL,
+  `adotado` tinyint(1) DEFAULT 0,
+  `status` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `animais`
+--
+
+INSERT INTO `animais` (`id`, `nome`, `idade`, `sexo`, `tipo`, `foto`, `adotado`, `status`) VALUES
+(26, 'Gatinho', 0, 'Macho', 'Gato', '1734426143983.jpg', 0, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `doacoes`
+--
+
+CREATE TABLE `doacoes` (
+  `id` int(11) NOT NULL,
+  `valor` decimal(10,2) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `data` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `doacoes`
+--
+
+INSERT INTO `doacoes` (`id`, `valor`, `nome`, `email`, `data`) VALUES
+(17, 100.00, 'Teste', 'teste@gmail.com', '2024-12-17 08:57:11');
+
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices de tabela `animais`
+--
+ALTER TABLE `animais`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `doacoes`
+--
+ALTER TABLE `doacoes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT para tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `animais`
+--
+ALTER TABLE `animais`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT de tabela `doacoes`
+--
+ALTER TABLE `doacoes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resgate de Animais</title>
+    <style>
+        /* Reset básico de margens e paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Definições de cor de fundo e fonte */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header com fundo roxo e texto branco */
+        header {
+            background-color: #5e2a84; /* Roxo escuro */
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-top: 0;
+            font-family: 'Helvetica', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        /* Link de Voltar para a página inicial */
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #5e2a84;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Container principal para o resgate */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Texto do resgate */
+        .rescue-text {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Lista de contatos de capturadores */
+        .contact-info {
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+
+        /* Responsividade para telas menores */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .rescue-text {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Resgate de Animais</h1>
+    </header>
+
+    <!-- Link de Voltar para a página inicial -->
+    <a href="/home" class="back-link">Voltar para a página inicial</a>
+
+    <div class="container">
+        <div class="rescue-text">
+            <p><strong>Socorro! Encontrei um animal!</strong></p>
+            <p>
+                Todo dia milhares de animais nascem ou são abandonados nas ruas. É impossível para os protetores e ONGs resgatar todos – não há espaço nem dinheiro.
+            </p>
+            <p>
+                Os animais, uma vez domesticados, passaram a depender de nós. Não espere que outra pessoa vá ajudar um animal doente, faminto, ferido, com frio ou medo. Faça a sua parte! Como? A gente te orienta!
+            </p>
+
+            <h3>Resgate</h3>
+            <p>
+                Você vai precisar de uma caixa de transporte para capturar o animal. Em caso de animais muito assustados, medrosos ou ariscos, você pode chamar um capturador profissional. O serviço é cobrado e muito bem feito.
+            </p>
+
+            <div class="contact-info">
+                <p><strong>Rogério</strong> - (11) 99503-4258</p>
+                <p><strong>Nico</strong> - (11) 98385-9244</p>
+            </div>
+
+            <h3>Acomodando o animal resgatado</h3>
+            <p>
+                Depois do resgate, você precisa de um local na sua casa para abrigá-lo. Pode ser na área de serviço, no lavabo, num banheirinho, até mesmo dentro do box.
+            </p>
+            <p>
+                Se você já tem outros animais em casa, nunca coloque o animal resgatado em contato com eles. Mesmo sem aparentar, o resgatado pode ter alguma doença contagiosa que irá colocar em risco os outros animais. Mesmo que você já o tenha levado ao veterinário, algumas doenças ficam incubadas e só vão se manifestar tempos depois.
+            </p>
+            <p>
+                Leve o animal ao veterinário para passar por um check-up e, dependendo do caso, até tomar um bom banho.
+            </p>
+
+            <h3>Veterinários e serviços</h3>
+            <p>
+                AQUI você encontra uma série de veterinários que atendem com preços mais acessíveis ou você pode procurar o CCZ (Centro de Controle de Zoonoses) para realizar a castração gratuitamente.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

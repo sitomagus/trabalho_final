@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - ONG Esperança</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background-color: #5e2a84;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 60vh; /* Altura em porcentagem da tela */
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        /* Estilização das Imagens */
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0; /* Inicialmente invisível */
+            transition: opacity 2s ease-in-out; /* Transição suave */
+        }
+
+        /* Imagens visíveis */
+        .slide.show {
+            opacity: 1; /* Imagem visível */
+        }
+
+        /* Conteúdo Principal */
+        .main-content {
+            position: relative;
+            z-index: 3; /* Garante que fique sobre o slideshow */
+            text-align: center;
+            color: #333;
+            padding: 1px 1px; /* Adiciona espaçamento */
+        }
+
+        .main-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+
+        .main-content p {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        /* Botões */
+        .button {
+            background-color: #7f57b1;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            margin: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .button:hover {
+            background-color: #642188;
+        }
+
+        /* Rodapé */
+        footer {
+            margin-top: 40px;
+            padding: 10px;
+            background-color: #5e2a84;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho com menu -->
+    <header>
+        <h1>ONG Esperança</h1>
+        <nav>
+            <a href="/faq">FAQ</a>
+            <a href="/animais-doados">Animais Doados</a>
+        </nav>
+    </header>
+
+    <!-- Slideshow -->
+    <div class="slideshow-container">
+        <div class="slide" style="background-image: url('/slide/slide1.jpg');"></div>
+        <div class="slide" style="background-image: url('/slide/slide2.jpg');"></div>
+        <div class="slide" style="background-image: url('/slide/slide3.jpg');"></div>
+    </div>
+
+    <!-- Conteúdo principal sobre o slide -->
+    <div class="main-content">
+        <h2>Bem-vindo à ONG Esperança!</h2>
+        <p>Temos muitos animais esperando por um lar. Vamos te ajudar!</p>
+
+        <div>
+            <a href="/animais" class="button">Quero Adotar</a>
+            <a href="/pagamento" class="button">Quero Ajudar</a>
+            <a href="/resgate" class="button">Resgate</a>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2024 ONG Esperança. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Script para o slideshow -->
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlides() {
+            slides.forEach((slide) => {
+                slide.classList.remove("show"); // Remove 'show' de todos
+            });
+
+            slides[slideIndex].classList.add("show"); // Adiciona 'show' no atual
+
+            slideIndex = (slideIndex + 1) % slides.length; // Próximo slide
+
+            setTimeout(showSlides, 3500); // Troca de imagem a cada 3 segundos
+        }
+
+        showSlides(); // Inicia o slideshow
+    </script>
+</body>
+</html>

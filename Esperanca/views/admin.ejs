@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Ong Esperança</title>
+    <style>
+        /* Cor de fundo e texto do cabeçalho */
+        h1 {
+            text-align: center;
+            color: white;
+            background-color: #5e2a84; /* Roxo #5e2a84 */
+            padding: 20px 0;
+            border-bottom: 2px solid #ddd;
+            margin: 0;
+        }
+
+        /* Cor roxa para os títulos principais (h2) */
+        h2 {
+            color: #5e2a84; /* Roxo #5e2a84 */
+            padding: 16px;
+            margin-top: 1px;  /* Menos espaço acima */
+            margin-bottom: 0px; /* Menos espaço abaixo */
+            font-weight: bold;
+        }
+
+        /* Estilo do corpo da página */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Formulários */
+        form {
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form input, form select, form button {
+            padding: 9px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        form button {
+            background-color: #5e2a84;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+
+        form button:hover {
+            background-color: #32114a;
+        }
+
+        /* Estilo da tabela */
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        table th, table td {
+            padding: 4px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Lista de animais */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+
+        ul li img {
+            margin-right: 15px;
+            width: 100px;
+        }
+
+        ul li strong {
+            margin-right: auto;
+        }
+
+        span {
+            color: #5e2a84;
+            font-weight: bold;
+        }
+
+        /* Estilo do formulário de adoção */
+        #form-adotar {
+            display: inline-block !important; /* Impede que o estilo de outros formulários afete esse */
+            margin-left: 10px !important;
+        }
+
+        /* Estilo do botão Adotar */
+        #adotar-btn {
+            background-color: #FF6347 !important; /* Cor de fundo para o botão Adotar */
+            color: white !important;
+            border: none !important;
+            padding: 8px 16px !important;
+            font-size: 14px !important;
+            cursor: pointer !important;
+            border-radius: 4px !important;
+        }
+
+        #adotar-btn:hover {
+            background-color: #E55347 !important; /* Cor mais escura ao passar o mouse */
+        }
+        ul li img {
+            margin-right: 15px;
+            width: 100px;
+            border-radius: 3px; /* Arredonda as bordas */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona uma leve sombra */
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Administração - Ong Esperança</h1>
+
+    <h2>Cadastrar Novo Animal</h2>
+    <form action="/add-animal" method="POST" enctype="multipart/form-data">
+        <input type="text" name="nome" placeholder="Nome" required>
+        <input type="number" name="idade" placeholder="Idade" required>
+        <select name="sexo" required>
+            <option value="Macho">Macho</option>
+            <option value="Fêmea">Fêmea</option>
+        </select>
+        <select name="tipo" required>
+            <option value="Gato">Gato</option>
+            <option value="Cachorro">Cachorro</option>
+        </select>
+        <input type="file" name="foto" required>
+        <button type="submit">Cadastrar Animal</button>
+    </form>
+
+    <h2>Editar Animal</h2>
+    <form action="/edit-animal" method="POST">
+        <select name="id">
+            <% animais.forEach(animal => { %>
+                <option value="<%= animal.id %>"><%= animal.nome %></option>
+            <% }) %>
+        </select>
+        <input type="text" name="nome" placeholder="Novo nome" required>
+        <input type="number" name="idade" placeholder="Nova idade" required>
+        <select name="sexo" required>
+            <option value="Macho">Macho</option>
+            <option value="Fêmea">Fêmea</option>
+        </select>
+        <select name="tipo" required>
+            <option value="Gato">Gato</option>
+            <option value="Cachorro">Cachorro</option>
+        </select>
+        <button type="submit">Editar Animal</button>
+    </form>
+
+    <h2>Excluir Animal</h2>
+    <form action="/delete-animal" method="POST">
+        <select name="id">
+            <% animais.forEach(animal => { %>
+                <option value="<%= animal.id %>"><%= animal.nome %></option>
+            <% }) %>
+        </select>
+        <button type="submit">Excluir Animal</button>
+    </form>
+
+    <h2>Animais Cadastrados</h2>
+    <ul>
+        <% animais.forEach(animal => { %>
+            <li>
+                <img src="/uploads/<%= animal.foto %>" alt="<%= animal.nome %>">
+                <strong><%= animal.nome %></strong>, <%= animal.idade %> anos, <%= animal.sexo %>, <%= animal.tipo %>
+                <% if (!animal.adotado) { %>
+                    <form id="form-adotar" action="/adopt-animal" method="POST" style="display:inline;">
+                        <input type="hidden" name="id" value="<%= animal.id %>">
+                        <button id="adotar-btn" type="submit">Adotar</button>
+                    </form>
+                <% } else { %>
+                    <span>(Adotado)</span>
+                <% } %>
+            </li>
+        <% }) %>
+    </ul>
+
+    <h2>RECIBO DOAÇÕES</h2>
+
+    <table border="1" cellpadding="1" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Valor</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% doacoes.forEach(doacao => { %>
+                <tr>
+                    <td><%= doacao.id %></td>
+                    <td>R$ <%= (parseFloat(doacao.valor) || 0).toFixed(2) %></td>
+                    <td><%= doacao.nome %></td>
+                    <td><%= doacao.email %></td>
+                    <td><%= doacao.data %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>
